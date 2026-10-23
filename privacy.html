@@ -1,0 +1,1551 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy – CUBE SPIN!</title>
+<meta name="description" content="The privacy policy of CUBE SPIN!, the cube puzzle game by TEVITO STUDIOS.">
+<meta name="theme-color" content="#06103f">
+<meta property="og:title" content="Privacy Policy – CUBE SPIN!">
+<meta property="og:description" content="The privacy policy of CUBE SPIN!, the cube puzzle game by TEVITO STUDIOS.">
+<meta property="og:image" content="assets/icon-512.webp?v=9e33c796">
+<link rel="icon" href="assets/favicon.png?v=7f8ec326">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=e6937ac5">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sky-hi: #2f8bff; --sky: #1559e8; --sky-deep: #0a2a9e; --night: #06103f; --ink: #04123f;
+  --panel-hi: #3b2fa6; --panel: #2a1f86; --panel-lo: #1d1563; --panel-edge: #120c45;
+  --text: #f3f1ff; --muted: #c9c3f5; --gold: #ffc21a; --gold-hi: #ffe680; --gold-lo: #e28a00;
+  --line: rgba(255, 255, 255, 0.12);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+body {
+  margin: 0; color: var(--text); background: var(--night);
+  font: 400 16.5px/1.7 'Nunito', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden; -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; }
+a { color: var(--gold-hi); text-underline-offset: 3px; }
+a:hover { color: #fff; }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 6px; }
+
+/* The game's sky: deep electric blue, lit from above, with turning rays and halftone. */
+.sky {
+  position: fixed; inset: 0; z-index: -1; overflow: hidden;
+  background:
+    radial-gradient(120% 70% at 50% 0%, var(--sky-hi) 0%, var(--sky) 30%, var(--sky-deep) 62%, var(--night) 100%);
+}
+.rays {
+  position: absolute; left: 50%; top: 12vh; width: 260vmax; height: 260vmax; margin: -130vmax 0 0 -130vmax;
+  -webkit-mask-image: radial-gradient(circle, #000 0%, rgba(0,0,0,0.55) 22%, transparent 48%);
+          mask-image: radial-gradient(circle, #000 0%, rgba(0,0,0,0.55) 22%, transparent 48%);
+}
+.rays-a {
+  background: repeating-conic-gradient(from 0deg, rgba(255,255,255,0.13) 0deg 5deg, transparent 5deg 15deg);
+  animation: turn 160s linear infinite, breathe 7s ease-in-out infinite;
+}
+.rays-b {
+  background: repeating-conic-gradient(from 7deg, rgba(190,225,255,0.10) 0deg 3deg, transparent 3deg 22deg);
+  animation: turn 220s linear infinite reverse, breathe 9s ease-in-out -3s infinite;
+}
+.halftone {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(rgba(255,255,255,0.09) 1.1px, transparent 1.6px);
+  background-size: 13px 13px;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 10%, #000 70%);
+          mask-image: linear-gradient(to bottom, transparent 10%, #000 70%);
+}
+.floaters { position: absolute; inset: 0; max-width: 1280px; margin: 0 auto; }
+.floater {
+  position: absolute; height: auto;
+  filter: drop-shadow(0 14px 14px rgba(4,18,63,0.45));
+  animation: drift calc(7s + var(--i) * 0.7s) ease-in-out calc(var(--i) * -1.3s) infinite alternate;
+}
+.floater.d0 { opacity: 0.55; filter: blur(1.5px) drop-shadow(0 6px 6px rgba(4,18,63,0.35)); }
+.floater.d1 { opacity: 0.85; }
+@keyframes turn { to { transform: rotate(360deg); } }
+@keyframes breathe { 0%, 100% { opacity: 0.75; } 50% { opacity: 1; } }
+@keyframes drift {
+  from { transform: translateY(-8px) rotate(calc(var(--i) * 9deg - 20deg)); }
+  to { transform: translateY(10px) rotate(calc(var(--i) * 9deg - 12deg)); }
+}
+
+/* Top bar: frosted night glass. */
+.topbar {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 10px max(16px, calc((100vw - 1180px) / 2));
+  background: rgba(6, 16, 63, 0.55); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; }
+.brand img { border-radius: 10px; box-shadow: 0 3px 0 var(--ink); }
+.brand span { font: 700 1.15rem/1 'Fredoka', sans-serif; letter-spacing: 0.4px; text-shadow: 0 2px 0 var(--ink); }
+.topbar nav { display: flex; gap: 4px; }
+.topbar nav a {
+  padding: 7px 12px; border-radius: 999px; text-decoration: none; color: var(--muted);
+  font: 600 0.95rem/1 'Fredoka', sans-serif;
+}
+.topbar nav a:hover, .topbar nav a[aria-current] { color: #fff; background: rgba(255,255,255,0.1); }
+
+/* Hero: the title, as on the menu, with its ink shadow. */
+.hero { position: relative; text-align: center; padding: 40px 16px 8px; }
+.wordmark { width: min(520px, 86vw); height: auto; filter: drop-shadow(0 10px 0 rgba(4,18,63,0.35)) drop-shadow(0 18px 26px rgba(4,18,63,0.45)); }
+.hero.compact .wordmark { width: min(300px, 64vw); }
+
+/* A plate in the game's moulded plastic. */
+.plate {
+  display: inline-block; position: relative; margin: 18px 0 0; padding: 12px 30px 14px;
+  border-radius: 20px; border: 3px solid var(--panel-edge);
+  font: 700 clamp(1.35rem, 4.6vw, 2rem)/1.1 'Fredoka', sans-serif; letter-spacing: 1px; text-transform: uppercase;
+  color: #fff; text-shadow: 0 3px 0 rgba(122, 60, 0, 0.9);
+  background: linear-gradient(180deg, var(--gold-hi) 0%, var(--gold) 48%, #f2a600 100%);
+  box-shadow: inset 0 3px 0 rgba(255,255,255,0.55), inset 0 -4px 0 rgba(184,106,0,0.55), 0 7px 0 var(--panel-edge), 0 18px 28px rgba(4,18,63,0.45);
+}
+.plate::after {
+  content: ''; position: absolute; left: 14px; right: 14px; top: 5px; height: 34%;
+  border-radius: 14px; background: linear-gradient(rgba(255,255,255,0.55), rgba(255,255,255,0));
+  pointer-events: none;
+}
+.chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 22px 0 0; }
+.chip {
+  padding: 6px 14px; border-radius: 999px; font: 600 0.88rem/1.3 'Fredoka', sans-serif; color: #fff;
+  background: rgba(6,16,63,0.45); border: 1px solid rgba(255,255,255,0.16);
+}
+
+/* Reading: the contents beside one plastic panel. */
+.layout {
+  display: grid; grid-template-columns: 1fr; gap: 20px;
+  max-width: 1180px; margin: 28px auto 0; padding: 0 16px;
+}
+@media (min-width: 980px) { .layout { grid-template-columns: 270px minmax(0, 1fr); align-items: start; } }
+.toc { position: relative; }
+@media (min-width: 980px) { .toc { position: sticky; top: 84px; max-height: calc(100vh - 100px); overflow: auto; } }
+.toc details {
+  background: rgba(6,16,63,0.55); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px;
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+}
+.toc summary {
+  cursor: pointer; list-style: none; padding: 14px 18px; font: 700 1rem/1 'Fredoka', sans-serif;
+  letter-spacing: 1px; text-transform: uppercase; color: var(--gold);
+}
+.toc summary::-webkit-details-marker { display: none; }
+.toc summary::after { content: '+'; float: right; color: var(--muted); }
+.toc details[open] summary::after { content: '–'; }
+.toc ol { list-style: none; margin: 0; padding: 0 10px 12px; }
+.toc a {
+  display: flex; gap: 10px; align-items: baseline; padding: 6px 8px; border-radius: 10px;
+  color: var(--muted); text-decoration: none; font-size: 0.86rem; line-height: 1.35;
+}
+.toc a b { color: #fff; font: 700 0.86rem/1.35 'Fredoka', sans-serif; min-width: 1.4em; }
+.toc a:hover, .toc a.on { color: #fff; background: rgba(255,255,255,0.09); }
+
+.panel {
+  position: relative; padding: clamp(22px, 4vw, 44px);
+  border-radius: 30px; border: 3px solid var(--panel-edge);
+  background: linear-gradient(180deg, var(--panel-hi) 0%, var(--panel) 18%, var(--panel-lo) 100%);
+  box-shadow: inset 0 3px 0 rgba(255,255,255,0.16), 0 10px 0 var(--panel-edge), 0 30px 60px rgba(4,18,63,0.55);
+}
+.intro { font-size: 1.04rem; }
+.intro, .section { max-width: 72ch; }
+.section { padding-top: 30px; margin-top: 30px; border-top: 2px dashed var(--line); }
+.section h2 {
+  display: flex; align-items: center; gap: 14px; margin: 0 0 14px;
+  font: 700 clamp(1.08rem, 2.6vw, 1.32rem)/1.25 'Fredoka', sans-serif; letter-spacing: 0.6px; color: #fff;
+}
+.badge { position: relative; flex: none; width: 46px; height: 46px; display: grid; place-items: center; }
+.badge img { position: absolute; inset: 0; width: 100%; height: 100%; filter: drop-shadow(0 4px 4px rgba(4,18,63,0.4)); }
+.badge span {
+  position: relative; font: 700 1.05rem/1 'Fredoka', sans-serif; color: #fff;
+  text-shadow: 0 2px 0 rgba(4,18,63,0.75), 0 0 6px rgba(4,18,63,0.4);
+}
+p { margin: 0 0 12px; }
+.strong { font-weight: 800; color: #fff; }
+ul { margin: 0 0 14px; padding: 0; list-style: none; }
+li { position: relative; padding-left: 24px; margin: 4px 0; }
+li::before {
+  content: ''; position: absolute; left: 4px; top: 0.62em; width: 9px; height: 9px; border-radius: 3px;
+  background: linear-gradient(135deg, var(--gold-hi), var(--gold-lo)); box-shadow: 0 1px 0 rgba(4,18,63,0.6);
+}
+
+/* Home page. */
+.crew { display: block; width: min(560px, 90vw); height: auto; margin: 10px auto 0; filter: drop-shadow(0 18px 18px rgba(4,18,63,0.5)); }
+.tagline { margin: 18px auto 0; max-width: 34ch; font: 600 clamp(1.1rem, 3.2vw, 1.45rem)/1.4 'Fredoka', sans-serif; text-shadow: 0 2px 0 var(--ink); }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+.title-2 { text-align: center; margin: 64px 0 22px; font: 700 clamp(1.5rem, 4vw, 2.1rem)/1.15 'Fredoka', sans-serif; text-shadow: 0 3px 0 var(--ink); }
+.modes { display: grid; gap: 22px; grid-template-columns: 1fr; }
+@media (min-width: 760px) { .modes { grid-template-columns: 1fr 1fr; } }
+.mode {
+  position: relative; padding: 26px 24px 24px; border-radius: 28px; border: 3px solid var(--panel-edge); color: #fff;
+  box-shadow: inset 0 3px 0 rgba(255,255,255,0.35), inset 0 -5px 0 rgba(0,0,0,0.18), 0 9px 0 var(--panel-edge), 0 26px 40px rgba(4,18,63,0.5);
+}
+.mode.classic { background: linear-gradient(180deg, #5fea3a 0%, #12c40f 45%, #06880b 100%); }
+.mode.blitz { background: linear-gradient(180deg, #ff5a3d 0%, #ec0808 45%, #a8000b 100%); }
+.mode h3 { margin: 0 0 4px; font: 700 1.9rem/1 'Fredoka', sans-serif; letter-spacing: 1.5px; text-shadow: 0 3px 0 rgba(0,0,0,0.35); }
+.mode .lead { margin: 0 0 14px; font: 600 1.05rem/1.4 'Fredoka', sans-serif; opacity: 0.95; }
+.facts { display: grid; gap: 8px; }
+.fact { display: flex; align-items: center; gap: 12px; padding: 9px 12px; line-height: 1.35; border-radius: 14px; background: rgba(0,0,0,0.18); }
+.fact b {
+  flex: none; min-width: 58px; text-align: center; padding: 4px 8px; border-radius: 10px;
+  font: 700 1rem/1.2 'Fredoka', sans-serif; background: rgba(255,255,255,0.22); text-shadow: 0 2px 0 rgba(0,0,0,0.3);
+}
+.steps { display: grid; gap: 18px; grid-template-columns: 1fr; }
+@media (min-width: 760px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+.step { text-align: center; padding: 26px 20px; border-radius: 26px; background: rgba(6,16,63,0.5); border: 1px solid rgba(255,255,255,0.14); }
+.step img { width: 64px; height: 64px; filter: drop-shadow(0 8px 8px rgba(4,18,63,0.5)); }
+.step h4 { margin: 10px 0 6px; font: 700 1.2rem/1.2 'Fredoka', sans-serif; }
+.step p { margin: 0; color: var(--muted); }
+.cards { display: grid; gap: 14px; grid-template-columns: 1fr; max-width: 760px; margin: 0 auto; }
+@media (min-width: 640px) {
+  .cards { grid-template-columns: 1fr 1fr; }
+  /* An odd card out (Support) sits centred under the pair, the same width as them. */
+  .cards > .card:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 7px); }
+}
+.card {
+  display: flex; align-items: center; gap: 14px; padding: 18px 20px; border-radius: 22px; text-decoration: none; color: #fff;
+  background: rgba(6,16,63,0.55); border: 1px solid rgba(255,255,255,0.16); transition: transform 0.15s, background 0.15s;
+}
+.card:hover { transform: translateY(-2px); background: rgba(6,16,63,0.75); color: #fff; }
+.card img { width: 44px; height: 44px; }
+.card b { display: block; font: 700 1.1rem/1.2 'Fredoka', sans-serif; }
+.card small { color: var(--muted); font-size: 0.88rem; }
+
+/* The mascot and his sign, in a glass card. */
+.accept {
+  display: grid; grid-template-columns: 1fr; align-items: center; gap: 4px 28px;
+  max-width: 980px; margin: 30px auto 0; padding: 18px 20px 24px; border-radius: 30px; text-align: center;
+  background: rgba(6,16,63,0.5); border: 1px solid rgba(255,255,255,0.16);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+}
+@media (min-width: 760px) { .accept { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); text-align: left; padding: 22px 34px 22px 14px; } }
+.layout + .accept, .wrap .accept { margin-top: 0; }
+.mascot {
+  width: min(400px, 92%); height: auto; margin: 0 auto;
+  filter: drop-shadow(0 16px 18px rgba(4,18,63,0.45));
+  animation: bob 3.6s ease-in-out infinite; transform-origin: 50% 90%;
+}
+@keyframes bob { 0%, 100% { transform: translateY(0) rotate(-1.5deg); } 50% { transform: translateY(-8px) rotate(1deg); } }
+.accept h2 { margin: 0 0 8px; font: 700 clamp(1.4rem, 3.6vw, 1.9rem)/1.15 'Fredoka', sans-serif; color: #fff; text-shadow: 0 3px 0 var(--ink); }
+.accept p { color: var(--muted); margin: 0 0 18px; }
+.keys { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+@media (min-width: 760px) { .keys { justify-content: flex-start; } }
+.key {
+  display: inline-block; padding: 12px 22px 13px; border-radius: 16px; border: 3px solid var(--panel-edge);
+  color: #fff; text-decoration: none; font: 700 1.02rem/1 'Fredoka', sans-serif; letter-spacing: 0.6px;
+  text-shadow: 0 2px 0 rgba(0,0,0,0.35);
+  box-shadow: inset 0 3px 0 rgba(255,255,255,0.4), inset 0 -4px 0 rgba(0,0,0,0.18), 0 6px 0 var(--panel-edge);
+  transition: transform 0.12s, box-shadow 0.12s;
+}
+.key:hover { color: #fff; transform: translateY(-2px); }
+.key:active { transform: translateY(4px); box-shadow: inset 0 3px 0 rgba(255,255,255,0.4), 0 2px 0 var(--panel-edge); }
+.key.green { background: linear-gradient(180deg, #5fea3a, #12c40f 50%, #06880b); }
+.key.purple { background: linear-gradient(180deg, #b36bff, #8a2be2 50%, #5a1aa8); }
+.key[aria-current] { outline: 3px solid var(--gold); outline-offset: 2px; }
+
+/* The app, as a store tile under the home page's hero. */
+.app-tile {
+  display: inline-flex; align-items: center; gap: 14px; margin-top: 22px; padding: 12px 22px 12px 12px; border-radius: 26px;
+  background: rgba(6,16,63,0.55); border: 1px solid rgba(255,255,255,0.18); text-align: left;
+}
+.app-tile img { width: 76px; height: 76px; border-radius: 18px; filter: drop-shadow(0 6px 8px rgba(4,18,63,0.5)); }
+.app-tile b { display: block; font: 700 1.25rem/1.1 'Fredoka', sans-serif; color: #fff; }
+.app-tile small { display: block; color: var(--muted); font-size: 0.86rem; line-height: 1.4; }
+.app-tile .soon-line { display: flex; align-items: center; gap: 8px; margin-top: 4px; color: #fff; font: 600 0.88rem/1.2 'Fredoka', sans-serif; }
+.app-tile .soon-line i { width: 8px; height: 8px; border-radius: 50%; background: #46e34a; box-shadow: 0 0 0 4px rgba(70,227,74,0.25); }
+
+.footer { text-align: center; padding: 64px 16px 40px; color: var(--muted); font-size: 0.86rem; }
+.footer .studio { height: auto; filter: drop-shadow(0 8px 12px rgba(4,18,63,0.5)); }
+.footer nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 18px; margin: 18px 0 12px; }
+.footer nav a { color: #fff; font-weight: 700; text-decoration: none; }
+.footer nav a:hover { color: var(--gold-hi); }
+.footer p { margin: 0; line-height: 1.6; }
+
+.to-top {
+  position: fixed; right: 16px; bottom: 16px; z-index: 10; width: 52px; height: 52px; border-radius: 16px;
+  display: grid; place-items: center; text-decoration: none; color: #fff; font: 700 1.4rem/1 'Fredoka', sans-serif;
+  border: 3px solid var(--panel-edge); text-shadow: 0 2px 0 rgba(122,60,0,0.9);
+  background: linear-gradient(180deg, var(--gold-hi), var(--gold) 50%, #f2a600);
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.5), 0 5px 0 var(--panel-edge);
+  opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity 0.2s, transform 0.2s;
+}
+.to-top.show { opacity: 1; transform: none; pointer-events: auto; }
+
+@media (max-width: 560px) {
+  .brand span { display: none; }
+  .floater.d2 { width: 54px !important; }
+  .floater.d0, .floater.d1 { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body id="top">
+
+<div class="sky" aria-hidden="true">
+  <div class="rays rays-a"></div>
+  <div class="rays rays-b"></div>
+  <div class="halftone"></div>
+  <div class="floaters">
+    <img class="floater d2" src="assets/block-blue.webp?v=de68e0ba" alt="" style="left:4%;top:40px;width:92px;--i:0">
+    <img class="floater d2" src="assets/block-purple.webp?v=4e3b1c62" alt="" style="left:88%;top:30px;width:84px;--i:1">
+    <img class="floater d1" src="assets/block-orange.webp?v=47e9701e" alt="" style="left:16%;top:230px;width:46px;--i:2">
+    <img class="floater d1" src="assets/block-green.webp?v=48a095d2" alt="" style="left:80%;top:250px;width:52px;--i:3">
+    <img class="floater d2" src="assets/block-red.webp?v=9ca7de31" alt="" style="left:93%;top:470px;width:70px;--i:4">
+    <img class="floater d2" src="assets/block-yellow.webp?v=286847d9" alt="" style="left:2%;top:520px;width:64px;--i:5">
+    <img class="floater d0" src="assets/block-gold.webp?v=b09368d8" alt="" style="left:70%;top:120px;width:30px;--i:6">
+    <img class="floater d0" src="assets/block-red.webp?v=9ca7de31" alt="" style="left:27%;top:95px;width:26px;--i:7">
+    <img class="floater d0" src="assets/block-blue.webp?v=de68e0ba" alt="" style="left:62%;top:420px;width:28px;--i:8">
+    <img class="floater d0" src="assets/block-green.webp?v=48a095d2" alt="" style="left:36%;top:600px;width:22px;--i:9">
+  </div>
+</div>
+
+<header class="topbar">
+  <a class="brand" href="./" aria-label="CUBE SPIN! home"><img src="assets/icon.png?v=a794ba85" alt="" width="36" height="36"><span>CUBE SPIN!</span></a>
+  <nav aria-label="Site">
+    <a href="privacy.html" aria-current="page">Privacy</a>
+    <a href="terms.html">Terms</a>
+    <a href="mailto:support@tevito.com">Support</a>
+  </nav>
+</header>
+
+<section class="hero compact">
+  <a href="./"><img class="wordmark" src="assets/title.webp?v=7ab4d55b" alt="CUBE SPIN!" width="1000" height="497"></a><br>
+  <h1 class="plate">PRIVACY POLICY</h1>
+  <div class="chips"><span class="chip">Last Updated: October 11, 2026</span><span class="chip">Effective Date: October 11, 2026</span></div>
+</section>
+<div class="wrap">
+<section class="accept" aria-label="Terms of Use and Privacy Policy">
+  <img class="mascot" src="assets/mascot-accept.webp?v=dd911f0d" alt="The green Cube Crew block holding a sign: Please accept our Terms of Use and read our Privacy Policy." width="720" height="543">
+  <div class="accept-words">
+    <h2>Before you play</h2>
+    <p>Please accept our Terms of Use and read our Privacy Policy. They explain the rules of CUBE SPIN!, how information is handled, and the choices you have.</p>
+    <div class="keys">
+      <a class="key green" href="terms.html">Terms of Use</a>
+      <a class="key purple" href="privacy.html" aria-current="page">Privacy Policy</a>
+    </div>
+  </div>
+</section></div>
+<div class="layout">
+  <aside class="toc"><details><summary>Contents</summary><ol>
+<li><a href="#s-1"><b>1</b><span>WHO WE ARE</span></a></li>
+<li><a href="#s-2"><b>2</b><span>DATA CONTROLLER</span></a></li>
+<li><a href="#s-3"><b>3</b><span>SCOPE OF THIS PRIVACY POLICY</span></a></li>
+<li><a href="#s-4"><b>4</b><span>NO REGISTRATION OR LOGIN</span></a></li>
+<li><a href="#s-5"><b>5</b><span>INFORMATION NOT REQUIRED FOR NORMAL GAMEPLAY</span></a></li>
+<li><a href="#s-6"><b>6</b><span>INFORMATION USERS ARE REQUIRED TO PROVIDE</span></a></li>
+<li><a href="#s-7"><b>7</b><span>INFORMATION PROVIDED WHEN CONTACTING US</span></a></li>
+<li><a href="#s-8"><b>8</b><span>SENSITIVE AND SPECIAL-CATEGORY INFORMATION</span></a></li>
+<li><a href="#s-9"><b>9</b><span>LOCAL GAMEPLAY DATA</span></a></li>
+<li><a href="#s-10"><b>10</b><span>LOSS AND DELETION OF LOCAL GAME DATA</span></a></li>
+<li><a href="#s-11"><b>11</b><span>ONLINE AND OFFLINE PLAY</span></a></li>
+<li><a href="#s-11"><b>11</b><span>1 Offline Use</span></a></li>
+<li><a href="#s-11"><b>11</b><span>2 Online Use</span></a></li>
+<li><a href="#s-12"><b>12</b><span>INFORMATION THAT MAY BE PROCESSED AUTOMATICALLY</span></a></li>
+<li><a href="#s-12"><b>12</b><span>1 Device Information</span></a></li>
+<li><a href="#s-12"><b>12</b><span>2 Network Information</span></a></li>
+<li><a href="#s-12"><b>12</b><span>3 Advertising Information</span></a></li>
+<li><a href="#s-12"><b>12</b><span>4 Gameplay and Application Information</span></a></li>
+<li><a href="#s-12"><b>12</b><span>5 Diagnostic Information</span></a></li>
+<li><a href="#s-12"><b>12</b><span>6 Approximate Location</span></a></li>
+<li><a href="#s-13"><b>13</b><span>ADVERTISING</span></a></li>
+<li><a href="#s-13"><b>13</b><span>1 Banner Advertisements</span></a></li>
+<li><a href="#s-13"><b>13</b><span>2 Interstitial Advertisements</span></a></li>
+<li><a href="#s-13"><b>13</b><span>3 No Rewarded Advertising</span></a></li>
+<li><a href="#s-14"><b>14</b><span>ADVERTISING PROVIDERS AND THIRD-PARTY SDKs</span></a></li>
+<li><a href="#s-15"><b>15</b><span>PROTECTION OF DATA SHARED WITH THIRD PARTIES</span></a></li>
+<li><a href="#s-16"><b>16</b><span>PERSONALIZED, NON-PERSONALIZED, AND CONTEXTUAL ADVERTISING</span></a></li>
+<li><a href="#s-17"><b>17</b><span>OPERATING-SYSTEM PRIVACY AND TRACKING PERMISSIONS</span></a></li>
+<li><a href="#s-18"><b>18</b><span>PURPOSES OF PROCESSING</span></a></li>
+<li><a href="#s-18"><b>18</b><span>1 Providing and Operating the Game</span></a></li>
+<li><a href="#s-18"><b>18</b><span>2 Advertising</span></a></li>
+<li><a href="#s-18"><b>18</b><span>3 Advertising Measurement</span></a></li>
+<li><a href="#s-18"><b>18</b><span>4 Fraud Prevention</span></a></li>
+<li><a href="#s-18"><b>18</b><span>5 Analytics</span></a></li>
+<li><a href="#s-18"><b>18</b><span>6 Diagnostics and Stability</span></a></li>
+<li><a href="#s-18"><b>18</b><span>7 Security</span></a></li>
+<li><a href="#s-18"><b>18</b><span>8 Game Development and Improvement</span></a></li>
+<li><a href="#s-18"><b>18</b><span>9 User Support and Communications</span></a></li>
+<li><a href="#s-18"><b>18</b><span>10 Legal Compliance</span></a></li>
+<li><a href="#s-19"><b>19</b><span>LEGAL BASES FOR PROCESSING</span></a></li>
+<li><a href="#s-19"><b>19</b><span>1 Consent</span></a></li>
+<li><a href="#s-19"><b>19</b><span>2 Legitimate Interests</span></a></li>
+<li><a href="#s-19"><b>19</b><span>3 Legal Obligations</span></a></li>
+<li><a href="#s-19"><b>19</b><span>4 Performance of a Service Requested by the User</span></a></li>
+<li><a href="#s-20"><b>20</b><span>ANALYTICS</span></a></li>
+<li><a href="#s-21"><b>21</b><span>CRASH REPORTING AND DIAGNOSTICS</span></a></li>
+<li><a href="#s-22"><b>22</b><span>THIRD-PARTY SERVICE PROVIDERS</span></a></li>
+<li><a href="#s-23"><b>23</b><span>APPLE AND GOOGLE SERVICES</span></a></li>
+<li><a href="#s-24"><b>24</b><span>THIRD-PARTY ADVERTISEMENTS AND EXTERNAL LINKS</span></a></li>
+<li><a href="#s-25"><b>25</b><span>DATA SHARING</span></a></li>
+<li><a href="#s-26"><b>26</b><span>SALE, SHARING, AND TARGETED ADVERTISING</span></a></li>
+<li><a href="#s-27"><b>27</b><span>ADVERTISING IDENTIFIERS AND PRIVACY CONTROLS</span></a></li>
+<li><a href="#s-28"><b>28</b><span>CONSENT RECORDS AND PRIVACY PREFERENCES</span></a></li>
+<li><a href="#s-29"><b>29</b><span>WITHDRAWING CONSENT</span></a></li>
+<li><a href="#s-30"><b>30</b><span>DEVICE STORAGE, SDKs, AND SIMILAR TECHNOLOGIES</span></a></li>
+<li><a href="#s-31"><b>31</b><span>DATA RETENTION</span></a></li>
+<li><a href="#s-32"><b>32</b><span>DATA DELETION</span></a></li>
+<li><a href="#s-32"><b>32</b><span>1 Local Game Data</span></a></li>
+<li><a href="#s-32"><b>32</b><span>2 Online Data</span></a></li>
+<li><a href="#s-33"><b>33</b><span>INTERNATIONAL DATA TRANSFERS</span></a></li>
+<li><a href="#s-34"><b>34</b><span>DATA SECURITY</span></a></li>
+<li><a href="#s-35"><b>35</b><span>CHILDREN'S PRIVACY</span></a></li>
+<li><a href="#s-36"><b>36</b><span>PRIVACY RIGHTS — EUROPEAN UNION AND EUROPEAN ECONOMIC AREA</span></a></li>
+<li><a href="#s-37"><b>37</b><span>PRIVACY REQUEST PROCEDURE AND RESPONSE TIMES</span></a></li>
+<li><a href="#s-38"><b>38</b><span>RIGHT TO LODGE A COMPLAINT WITH A SUPERVISORY OR REGULATORY AUTHORITY</span></a></li>
+<li><a href="#s-39"><b>39</b><span>OTHER REGIONAL PRIVACY RIGHTS</span></a></li>
+<li><a href="#s-40"><b>40</b><span>AUTOMATED DECISION-MAKING AND PROFILING</span></a></li>
+<li><a href="#s-41"><b>41</b><span>PRIVACY PREFERENCE SIGNALS</span></a></li>
+<li><a href="#s-42"><b>42</b><span>CHANGES TO THIRD-PARTY SERVICES AND SDKs</span></a></li>
+<li><a href="#s-43"><b>43</b><span>APP STORE AND GOOGLE PLAY PRIVACY DISCLOSURES</span></a></li>
+<li><a href="#s-44"><b>44</b><span>CONSISTENCY BETWEEN THE GAME, PRIVACY POLICY, AND STORE DISCLOSURES</span></a></li>
+<li><a href="#s-45"><b>45</b><span>AVAILABILITY OF PRIVACY POLICY AND TERMS OF USE</span></a></li>
+<li><a href="#s-46"><b>46</b><span>YOUR PRIVACY CHOICES</span></a></li>
+<li><a href="#s-47"><b>47</b><span>CHANGES TO THIS PRIVACY POLICY</span></a></li>
+<li><a href="#s-48"><b>48</b><span>CONTACT US</span></a></li>
+<li><a href="#s-49"><b>49</b><span>FINAL PRIVACY STATEMENT</span></a></li>
+  </ol></details></aside>
+  <article class="panel">
+    <div class="intro">
+<p>This Privacy Policy explains how information is handled in connection with the mobile game CUBE SPIN! (“CUBE SPIN!,” the “Game”) and services directly related to the Game.</p>
+<p>CUBE SPIN! was conceived and developed under the TEVITO STUDIOS™ brand.</p>
+<p class="strong">TEVITO STUDIOS™ is the public-facing brand under which CUBE SPIN! is developed, published, and operated.</p>
+<p>For purposes of this Privacy Policy, “TEVITO STUDIOS,” “Developer,” “Operator,” “we,” “us,” or “our” refers to the developer and operator of CUBE SPIN! acting under the TEVITO STUDIOS™ brand.</p>
+<p>TEVITO STUDIOS™ is used as a brand name and is not represented as a separate incorporated company or other separate legal entity.</p>
+<p>For purposes of applicable data-protection law, the Data Controller responsible for relevant processing connected with CUBE SPIN! is:</p>
+<p>Tomislav Vitić, operating under the TEVITO STUDIOS™ brand.</p>
+<p>Privacy contact:<br><a href="mailto:info@tevito.com">info@tevito.com</a></p>
+<p>General support:<br><a href="mailto:support@tevito.com">support@tevito.com</a></p>
+<p>CUBE SPIN! is currently provided as a free mobile game that may be played both online and offline.</p>
+<p>The Game does not currently require:</p>
+<ul>
+<li>registration;</li>
+<li>creation of a CUBE SPIN! or TEVITO STUDIOS™ account;</li>
+<li>a username;</li>
+<li>a password;</li>
+<li>an email address;</li>
+<li>a telephone number;</li>
+<li>Google login;</li>
+<li>Apple login; or</li>
+<li>social-media login</li>
+</ul>
+<p>in order to play.</p>
+<p>CUBE SPIN! does not currently contain in-app purchases, paid subscriptions, paid Virtual Items, or paid gameplay advantages.</p>
+<p>The Game is monetized primarily through:</p>
+<ul>
+<li>Banner Advertisements displayed within the Game; and</li>
+<li>Interstitial or full-screen Advertisements displayed periodically during gameplay or at appropriate gameplay transitions.</li>
+</ul>
+<p>Advertising and certain online or technical services may involve the processing of limited device, network, advertising, gameplay, diagnostic, security, consent, or similar information.</p>
+<p>Where applicable law requires consent for a particular processing activity, that processing will occur only after the required consent has been obtained.</p>
+<p class="strong">Use of CUBE SPIN! by itself does not constitute consent where applicable law requires separate affirmative consent.</p>
+    </div>
+    <section class="section" id="s-1">
+      <h2><span class="badge"><img class="" src="assets/block-blue.webp?v=de68e0ba" alt="" ><span>1</span></span>WHO WE ARE</h2>
+<p>CUBE SPIN! was conceived and developed under the TEVITO STUDIOS™ brand.</p>
+<p>TEVITO STUDIOS™ is the public-facing brand and creative identity associated with CUBE SPIN!.</p>
+<p>TEVITO STUDIOS™ is not, merely by use of that name, represented as a separately incorporated company, partnership, or other separate legal person.</p>
+<p>The Game is operated by:</p>
+<p>Tomislav Vitić, operating under the TEVITO STUDIOS™ brand.</p>
+<p>Privacy contact:<br><a href="mailto:info@tevito.com">info@tevito.com</a></p>
+<p>General support:<br><a href="mailto:support@tevito.com">support@tevito.com</a></p>
+    </section>
+    <section class="section" id="s-2">
+      <h2><span class="badge"><img class="" src="assets/block-red.webp?v=9ca7de31" alt="" ><span>2</span></span>DATA CONTROLLER</h2>
+<p>For purposes of applicable data-protection law, including the General Data Protection Regulation (“GDPR”) where applicable, the Data Controller responsible for determining the purposes and means of relevant personal-data processing in connection with CUBE SPIN! is:</p>
+<p>Tomislav Vitić, operating under the TEVITO STUDIOS™ brand.</p>
+<p>Privacy contact:<br><a href="mailto:info@tevito.com">info@tevito.com</a></p>
+<p>Where an independent third-party provider determines its own purposes and means of processing, that provider may separately act as an independent controller under applicable law.</p>
+    </section>
+    <section class="section" id="s-3">
+      <h2><span class="badge"><img class="" src="assets/block-yellow.webp?v=286847d9" alt="" ><span>3</span></span>SCOPE OF THIS PRIVACY POLICY</h2>
+<p>This Privacy Policy applies to information processed through or in connection with:</p>
+<ul>
+<li>CUBE SPIN!;</li>
+<li>Online Features of the Game;</li>
+<li>advertising delivered through the Game;</li>
+<li>analytics technologies, where implemented;</li>
+<li>diagnostic and crash-reporting technologies, where implemented;</li>
+<li>security and fraud-prevention technologies;</li>
+<li>consent-management technologies, where implemented;</li>
+<li>User communications with TEVITO STUDIOS™; and</li>
+<li>services directly connected with operation, support, distribution, security, improvement, or monetization of the Game.</li>
+</ul>
+<p>This Privacy Policy explains:</p>
+<ul>
+<li>what information may be processed;</li>
+<li>what information Users are not required to provide;</li>
+<li>how information may be obtained;</li>
+<li>the purposes for which information may be used;</li>
+<li>the legal bases for processing;</li>
+<li>how advertising works;</li>
+<li>how Online and Offline Features affect data processing;</li>
+<li>how third-party services may process information;</li>
+<li>how long information may be retained;</li>
+<li>how information is protected;</li>
+<li>how Users may exercise privacy choices and rights; and</li>
+<li>how Users may contact the Data Controller.</li>
+</ul>
+<p>Independent third-party websites, applications, advertisements, app stores, products, or services may maintain their own privacy policies and terms.</p>
+    </section>
+    <section class="section" id="s-4">
+      <h2><span class="badge"><img class="" src="assets/block-green.webp?v=48a095d2" alt="" ><span>4</span></span>NO REGISTRATION OR LOGIN</h2>
+<p>CUBE SPIN! does not currently require Users to create a CUBE SPIN! or TEVITO STUDIOS™ account.</p>
+<p>Users are not required to provide directly to TEVITO STUDIOS™:</p>
+<ul>
+<li>a username;</li>
+<li>a password;</li>
+<li>an account email address;</li>
+<li>a telephone number;</li>
+<li>an Apple login;</li>
+<li>a Google login; or</li>
+<li>a social-media login</li>
+</ul>
+<p>in order to play the Game.</p>
+<p>A Platform Provider may independently require its own account in order to download applications or use its platform.</p>
+<p>For example, an Apple or Google account may be required for certain App Store or Google Play functionality.</p>
+<p>Such accounts belong to the relevant Platform Provider's ecosystem and are not CUBE SPIN! or TEVITO STUDIOS™ accounts.</p>
+    </section>
+    <section class="section" id="s-5">
+      <h2><span class="badge"><img class="" src="assets/block-purple.webp?v=4e3b1c62" alt="" ><span>5</span></span>INFORMATION NOT REQUIRED FOR NORMAL GAMEPLAY</h2>
+<p>CUBE SPIN! is designed so that ordinary gameplay does not require Users to directly provide conventional registration or identity information.</p>
+<p>TEVITO STUDIOS™ does not currently require the following for ordinary gameplay:</p>
+<ul>
+<li>full name;</li>
+<li>home address;</li>
+<li>telephone number;</li>
+<li>account email address;</li>
+<li>username;</li>
+<li>password;</li>
+<li>date of birth;</li>
+<li>payment-card information;</li>
+<li>bank-account information;</li>
+<li>government identification;</li>
+<li>contact list;</li>
+<li>photographs;</li>
+<li>microphone recordings;</li>
+<li>camera access;</li>
+<li>biometric information; or</li>
+<li>precise GPS location.</li>
+</ul>
+<p>CUBE SPIN! does not currently process payments for in-Game purchases because the Game does not contain in-app purchases or paid subscriptions.</p>
+<p>This does not mean that no information is processed when the Game is used.</p>
+<p>Advertising and technical services may automatically process limited technical information as described in this Privacy Policy.</p>
+    </section>
+    <section class="section" id="s-6">
+      <h2><span class="badge"><img class="" src="assets/block-orange.webp?v=47e9701e" alt="" ><span>6</span></span>INFORMATION USERS ARE REQUIRED TO PROVIDE</h2>
+<p>Users are not currently required to provide TEVITO STUDIOS™ with conventional identity information in order to play CUBE SPIN!.</p>
+<p>Certain technical information may, however, necessarily be processed when a User connects the Game to the internet or uses Online Features.</p>
+<p>For example, an IP address and certain technical connection information may necessarily be processed when a device communicates with an online service.</p>
+<p>Where optional consent is requested for personalized advertising, tracking, optional analytics, or comparable processing, Users are not required to provide such consent in order to access ordinary gameplay unless otherwise expressly stated and legally permitted.</p>
+<p>Refusal or withdrawal of optional advertising consent may result in contextual or non-personalized advertising where technically and legally available.</p>
+    </section>
+    <section class="section" id="s-7">
+      <h2><span class="badge"><img class="" src="assets/block-blue.webp?v=de68e0ba" alt="" ><span>7</span></span>INFORMATION PROVIDED WHEN CONTACTING US</h2>
+<p>If a User voluntarily contacts TEVITO STUDIOS™ through email or another available support or privacy channel, TEVITO STUDIOS™ may receive information provided by that User.</p>
+<p>Such information may include:</p>
+<ul>
+<li>the User's email address;</li>
+<li>the name associated with the email account;</li>
+<li>the contents of the communication;</li>
+<li>screenshots or attachments voluntarily provided;</li>
+<li>technical information voluntarily provided for troubleshooting;</li>
+<li>device or operating-system information provided by the User;</li>
+<li>Game-version information;</li>
+<li>information concerning a privacy request; and</li>
+<li>other information the User voluntarily chooses to provide.</li>
+</ul>
+<p>This information may be used to:</p>
+<ul>
+<li>respond to questions;</li>
+<li>provide support;</li>
+<li>investigate technical problems;</li>
+<li>investigate bugs or crashes;</li>
+<li>respond to privacy requests;</li>
+<li>protect the Game and its Users;</li>
+<li>prevent abuse or fraud;</li>
+<li>resolve complaints or disputes;</li>
+<li>comply with legal obligations; and</li>
+<li>establish, exercise, or defend legal claims.</li>
+</ul>
+<p>Users should avoid providing personal information that is not reasonably necessary for their request.</p>
+    </section>
+    <section class="section" id="s-8">
+      <h2><span class="badge"><img class="" src="assets/block-red.webp?v=9ca7de31" alt="" ><span>8</span></span>SENSITIVE AND SPECIAL-CATEGORY INFORMATION</h2>
+<p>CUBE SPIN! is not designed to require Users to provide sensitive or special-category personal information for ordinary gameplay.</p>
+<p>TEVITO STUDIOS™ does not intentionally request, for ordinary gameplay, information concerning:</p>
+<ul>
+<li>racial or ethnic origin;</li>
+<li>political opinions;</li>
+<li>religious or philosophical beliefs;</li>
+<li>trade-union membership;</li>
+<li>genetic information;</li>
+<li>biometric information used for unique identification;</li>
+<li>health information;</li>
+<li>information concerning a person's sex life or sexual orientation; or</li>
+<li>comparable specially protected information.</li>
+</ul>
+<p>Users who contact TEVITO STUDIOS™ should not provide such information unless reasonably necessary for a legitimate request.</p>
+<p>TEVITO STUDIOS™ does not intend to use voluntarily provided sensitive information for advertising purposes.</p>
+    </section>
+    <section class="section" id="s-9">
+      <h2><span class="badge"><img class="" src="assets/block-yellow.webp?v=286847d9" alt="" ><span>9</span></span>LOCAL GAMEPLAY DATA</h2>
+<p>Because CUBE SPIN! does not currently require a User account, Game progress may be stored primarily or entirely on the User's device.</p>
+<p>Locally stored information may include:</p>
+<ul>
+<li>Game progress;</li>
+<li>completed levels;</li>
+<li>scores;</li>
+<li>high scores;</li>
+<li>achievements;</li>
+<li>Game settings;</li>
+<li>preferences;</li>
+<li>unlocked gameplay elements;</li>
+<li>streaks;</li>
+<li>Game-state information; and</li>
+<li>other information necessary for Game functionality.</li>
+</ul>
+<p>Where such information remains entirely on the User's device and is not transmitted to TEVITO STUDIOS™ or a third-party provider, TEVITO STUDIOS™ does not remotely receive or store that information.</p>
+    </section>
+    <section class="section" id="s-10">
+      <h2><span class="badge"><img class="" src="assets/block-green.webp?v=48a095d2" alt="" ><span>10</span></span>LOSS AND DELETION OF LOCAL GAME DATA</h2>
+<p>Locally stored Game information may be permanently removed or become unavailable if a User:</p>
+<ul>
+<li>uninstalls CUBE SPIN!;</li>
+<li>clears application data or storage;</li>
+<li>resets the device;</li>
+<li>replaces the device;</li>
+<li>reinstalls the operating system;</li>
+<li>deletes relevant backup data; or</li>
+<li>experiences hardware, software, or storage failure.</li>
+</ul>
+<p>Where CUBE SPIN! does not provide a specific cloud backup, synchronization, or recovery function, TEVITO STUDIOS™ may be unable to restore lost Game progress.</p>
+<p>Users may generally remove locally stored CUBE SPIN! information by:</p>
+<ul>
+<li>clearing the Game's application data through device settings; or</li>
+<li>uninstalling CUBE SPIN!.</li>
+</ul>
+<p>Device manufacturers, operating-system providers, Apple, Google, or other Platform Providers may independently provide backup or synchronization functionality.</p>
+<p>TEVITO STUDIOS™ does not control or guarantee those independent services.</p>
+    </section>
+    <section class="section" id="s-11">
+      <h2><span class="badge"><img class="" src="assets/block-purple.webp?v=4e3b1c62" alt="" ><span>11</span></span>ONLINE AND OFFLINE PLAY</h2>
+<p>CUBE SPIN! is designed to support both online and offline functionality.</p>
+    </section>
+    <section class="section" id="s-11">
+      <h2><span class="badge"><img class="" src="assets/block-orange.webp?v=47e9701e" alt="" ><span>11</span></span>1 Offline Use</h2>
+<p>Certain Game functionality may operate without an active internet connection.</p>
+<p>Depending on the Game version and device, Users may be able to:</p>
+<ul>
+<li>play supported Game modes;</li>
+<li>complete levels;</li>
+<li>earn scores;</li>
+<li>progress through the Game;</li>
+<li>access locally stored settings; and</li>
+<li>use other locally available functionality.</li>
+</ul>
+<p>Online advertisements normally require an internet connection and may therefore not be available while the Game is offline.</p>
+<p>Certain technical, diagnostic, analytics, configuration, security, consent, or advertising-related information generated or stored during offline use may, depending on the technology actually implemented, be transmitted when the device later reconnects to the internet.</p>
+    </section>
+    <section class="section" id="s-11">
+      <h2><span class="badge"><img class="" src="assets/block-blue.webp?v=de68e0ba" alt="" ><span>11</span></span>2 Online Use</h2>
+<p>When an internet connection is available, CUBE SPIN! may communicate with online or third-party services for purposes including:</p>
+<ul>
+<li>displaying advertisements;</li>
+<li>advertising measurement;</li>
+<li>advertising frequency management;</li>
+<li>fraud prevention;</li>
+<li>consent management;</li>
+<li>analytics;</li>
+<li>diagnostics;</li>
+<li>crash reporting;</li>
+<li>security;</li>
+<li>remote configuration;</li>
+<li>checking Game versions;</li>
+<li>compatibility;</li>
+<li>supporting updates;</li>
+<li>operating the Game;</li>
+<li>maintaining the Game; and</li>
+<li>improving the Game.</li>
+</ul>
+<p>An internet connection does not require creation of a CUBE SPIN! or TEVITO STUDIOS™ account.</p>
+    </section>
+    <section class="section" id="s-12">
+      <h2><span class="badge"><img class="" src="assets/block-red.webp?v=9ca7de31" alt="" ><span>12</span></span>INFORMATION THAT MAY BE PROCESSED AUTOMATICALLY</h2>
+<p>The information actually processed depends on the technologies and SDKs incorporated into the released version of CUBE SPIN!, applicable settings, User choices, and applicable law.</p>
+    </section>
+    <section class="section" id="s-12">
+      <h2><span class="badge"><img class="" src="assets/block-yellow.webp?v=286847d9" alt="" ><span>12</span></span>1 Device Information</h2>
+<p>This may include:</p>
+<ul>
+<li>device type;</li>
+<li>device model;</li>
+<li>device manufacturer;</li>
+<li>operating system;</li>
+<li>operating-system version;</li>
+<li>application version;</li>
+<li>device language;</li>
+<li>screen or display information; and</li>
+<li>technical device characteristics.</li>
+</ul>
+    </section>
+    <section class="section" id="s-12">
+      <h2><span class="badge"><img class="" src="assets/block-green.webp?v=48a095d2" alt="" ><span>12</span></span>2 Network Information</h2>
+<p>This may include:</p>
+<ul>
+<li>IP address;</li>
+<li>network type;</li>
+<li>connection information; and</li>
+<li>other technical network information.</li>
+</ul>
+    </section>
+    <section class="section" id="s-12">
+      <h2><span class="badge"><img class="" src="assets/block-purple.webp?v=4e3b1c62" alt="" ><span>12</span></span>3 Advertising Information</h2>
+<p>Where applicable and legally permitted, this may include:</p>
+<ul>
+<li>advertising identifiers;</li>
+<li>advertisement impressions;</li>
+<li>advertisement views;</li>
+<li>advertisement interactions;</li>
+<li>advertising campaign information;</li>
+<li>advertising frequency information;</li>
+<li>attribution information;</li>
+<li>consent or privacy signals; and</li>
+<li>fraud-prevention information.</li>
+</ul>
+    </section>
+    <section class="section" id="s-12">
+      <h2><span class="badge"><img class="" src="assets/block-orange.webp?v=47e9701e" alt="" ><span>12</span></span>4 Gameplay and Application Information</h2>
+<p>This may include:</p>
+<ul>
+<li>Game-session information;</li>
+<li>session duration;</li>
+<li>Game start and stop events;</li>
+<li>gameplay events;</li>
+<li>screens or features used;</li>
+<li>technical level events;</li>
+<li>application performance; and</li>
+<li>technical interaction information.</li>
+</ul>
+    </section>
+    <section class="section" id="s-12">
+      <h2><span class="badge"><img class="" src="assets/block-blue.webp?v=de68e0ba" alt="" ><span>12</span></span>5 Diagnostic Information</h2>
+<p>This may include:</p>
+<ul>
+<li>crash reports;</li>
+<li>error reports;</li>
+<li>technical logs;</li>
+<li>application failures;</li>
+<li>performance information;</li>
+<li>device compatibility information; and</li>
+<li>other diagnostic information.</li>
+</ul>
+    </section>
+    <section class="section" id="s-12">
+      <h2><span class="badge"><img class="" src="assets/block-red.webp?v=9ca7de31" alt="" ><span>12</span></span>6 Approximate Location</h2>
+<p>Certain online service providers may infer a general or approximate geographic location from technical information such as an IP address.</p>
+<p class="strong">CUBE SPIN! does not require access to precise GPS location for ordinary gameplay.</p>
+    </section>
+    <section class="section" id="s-13">
+      <h2><span class="badge"><img class="" src="assets/block-yellow.webp?v=286847d9" alt="" ><span>13</span></span>ADVERTISING</h2>
+<p>Advertising supports the free availability of CUBE SPIN!.</p>
+<p>CUBE SPIN! may display:</p>
+<ul>
+<li>Banner Advertisements; and</li>
+<li>Interstitial or full-screen Advertisements.</li>
+</ul>
+    </section>
+    <section class="section" id="s-13">
+      <h2><span class="badge"><img class="" src="assets/block-green.webp?v=48a095d2" alt="" ><span>13</span></span>1 Banner Advertisements</h2>
+<p>Banner Ads may appear within designated areas of the Game interface, including during gameplay, within menus, or in other appropriate locations.</p>
+<p>Users are not required to click an Advertisement in order to continue ordinary gameplay.</p>
+    </section>
+    <section class="section" id="s-13">
+      <h2><span class="badge"><img class="" src="assets/block-purple.webp?v=4e3b1c62" alt="" ><span>13</span></span>2 Interstitial Advertisements</h2>
+<p>Interstitial or full-screen Ads may appear periodically, including:</p>
+<ul>
+<li>after a period of gameplay;</li>
+<li>after completion of a level;</li>
+<li>during natural gameplay pauses;</li>
+<li>between screens;</li>
+<li>between Game sessions; or</li>
+<li>at other appropriate gameplay transitions.</li>
+</ul>
+    </section>
+    <section class="section" id="s-13">
+      <h2><span class="badge"><img class="" src="assets/block-orange.webp?v=47e9701e" alt="" ><span>13</span></span>3 No Rewarded Advertising</h2>
+<p>CUBE SPIN! does not currently use rewarded advertising as part of its described business model.</p>
+<p>Unless expressly introduced in a later version, ordinary Advertisements do not provide:</p>
+<ul>
+<li>additional lives;</li>
+<li>additional moves;</li>
+<li>bonus points;</li>
+<li>Virtual Items;</li>
+<li>gameplay advantages; or</li>
+<li>similar rewards.</li>
+</ul>
+<p>If rewarded advertising is introduced in the future and materially changes data practices, relevant disclosures will be updated where required.</p>
+    </section>
+    <section class="section" id="s-14">
+      <h2><span class="badge"><img class="" src="assets/block-blue.webp?v=de68e0ba" alt="" ><span>14</span></span>ADVERTISING PROVIDERS AND THIRD-PARTY SDKs</h2>
+<p>TEVITO STUDIOS™ may use third-party advertising networks, mediation providers, consent-management technologies, analytics technologies, diagnostic services, security services, or other SDKs necessary or useful for operating and monetizing the Game.</p>
+<p>Such technologies may process information including:</p>
+<ul>
+<li>IP addresses;</li>
+<li>device information;</li>
+<li>operating-system information;</li>
+<li>advertising identifiers where permitted;</li>
+<li>approximate location derived from technical information;</li>
+<li>advertising impressions;</li>
+<li>advertising interactions;</li>
+<li>advertising frequency information;</li>
+<li>attribution information;</li>
+<li>fraud-prevention signals;</li>
+<li>diagnostic information; and</li>
+<li>privacy or consent preferences.</li>
+</ul>
+<p>The exact information processed depends on the providers and configurations actually incorporated into the released version of CUBE SPIN!.</p>
+<p>Before release and following material changes, TEVITO STUDIOS™ intends to review the data practices of incorporated SDKs and align this Privacy Policy and applicable Platform Provider disclosures with the Game's actual data practices.</p>
+    </section>
+    <section class="section" id="s-15">
+      <h2><span class="badge"><img class="" src="assets/block-red.webp?v=9ca7de31" alt="" ><span>15</span></span>PROTECTION OF DATA SHARED WITH THIRD PARTIES</h2>
+<p>Where personal data is shared with a service provider in connection with CUBE SPIN!, TEVITO STUDIOS™ will seek, where applicable, to ensure that appropriate contractual, organizational, security, and legal safeguards are in place.</p>
+<p>TEVITO STUDIOS™ seeks to use third-party providers that maintain appropriate privacy and security measures.</p>
+<p>Where required by applicable law or Platform Provider requirements, relevant third parties must provide protections appropriate to the information processed.</p>
+<p>The integration of a third-party service does not remove TEVITO STUDIOS™' responsibility to appropriately evaluate technologies integrated into the Game where required by applicable law or applicable Platform Provider rules.</p>
+    </section>
+    <section class="section" id="s-16">
+      <h2><span class="badge"><img class="" src="assets/block-yellow.webp?v=286847d9" alt="" ><span>16</span></span>PERSONALIZED, NON-PERSONALIZED, AND CONTEXTUAL ADVERTISING</h2>
+<p>Depending on:</p>
+<ul>
+<li>the User's country or region;</li>
+<li>applicable law;</li>
+<li>applicable age-related requirements;</li>
+<li>device settings;</li>
+<li>operating-system permissions;</li>
+<li>User privacy choices;</li>
+<li>consent status;</li>
+<li>advertising-provider capabilities; and</li>
+<li>advertising configuration,</li>
+</ul>
+<p>CUBE SPIN! may display:</p>
+<ul>
+<li>contextual advertising;</li>
+<li>non-personalized advertising; or</li>
+<li>personalized advertising.</li>
+</ul>
+<p>Where applicable law requires prior consent before information may be used for personalized advertising, tracking, profiling, advertising identifiers, or comparable technologies, the required consent will be obtained before the relevant processing is activated.</p>
+<p>Refusing or withdrawing optional consent for personalized advertising does not by itself prevent ordinary gameplay.</p>
+<p>Where legally and technically available, contextual or non-personalized Advertisements may continue to be displayed.</p>
+    </section>
+    <section class="section" id="s-17">
+      <h2><span class="badge"><img class="" src="assets/block-green.webp?v=48a095d2" alt="" ><span>17</span></span>OPERATING-SYSTEM PRIVACY AND TRACKING PERMISSIONS</h2>
+<p>Mobile operating systems may provide privacy controls governing:</p>
+<ul>
+<li>tracking;</li>
+<li>advertising identifiers;</li>
+<li>personalized advertising;</li>
+<li>application permissions; and</li>
+<li>related technologies.</li>
+</ul>
+<p>Where an operating system requires express User permission before particular tracking or comparable processing occurs, CUBE SPIN! will use the applicable system permission mechanism where required.</p>
+<p>Where Apple's App Tracking Transparency framework applies, tracking subject to that framework will not be initiated through the Game before the required permission has been requested and obtained.</p>
+<p>Users may also be able to manage relevant privacy choices through their device settings.</p>
+    </section>
+    <section class="section" id="s-18">
+      <h2><span class="badge"><img class="" src="assets/block-purple.webp?v=4e3b1c62" alt="" ><span>18</span></span>PURPOSES OF PROCESSING</h2>
+<p>Information processed in connection with CUBE SPIN! may be used for the following purposes.</p>
+    </section>
+    <section class="section" id="s-18">
+      <h2><span class="badge"><img class="" src="assets/block-orange.webp?v=47e9701e" alt="" ><span>18</span></span>1 Providing and Operating the Game</h2>
+<p>To provide Game functionality and Online Features and ensure the Game operates correctly.</p>
+    </section>
+    <section class="section" id="s-18">
+      <h2><span class="badge"><img class="" src="assets/block-blue.webp?v=de68e0ba" alt="" ><span>18</span></span>2 Advertising</h2>
+<p>To display Banner and Interstitial Advertisements that support the free availability of CUBE SPIN!.</p>
+    </section>
+    <section class="section" id="s-18">
+      <h2><span class="badge"><img class="" src="assets/block-red.webp?v=9ca7de31" alt="" ><span>18</span></span>3 Advertising Measurement</h2>
+<p>Where legally permitted, to measure:</p>
+<ul>
+<li>advertisement delivery;</li>
+<li>impressions;</li>
+<li>frequency;</li>
+<li>performance;</li>
+<li>interactions; and</li>
+<li>attribution.</li>
+</ul>
+    </section>
+    <section class="section" id="s-18">
+      <h2><span class="badge"><img class="" src="assets/block-yellow.webp?v=286847d9" alt="" ><span>18</span></span>4 Fraud Prevention</h2>
+<p>To identify or prevent:</p>
+<ul>
+<li>fraudulent advertising traffic;</li>
+<li>artificial impressions;</li>
+<li>automated activity;</li>
+<li>advertising manipulation;</li>
+<li>cheating;</li>
+<li>technical abuse;</li>
+<li>malicious behavior; and</li>
+<li>security threats.</li>
+</ul>
+    </section>
+    <section class="section" id="s-18">
+      <h2><span class="badge"><img class="" src="assets/block-green.webp?v=48a095d2" alt="" ><span>18</span></span>5 Analytics</h2>
+<p>Where implemented, to understand general Game usage, technical performance, and feature interaction.</p>
+    </section>
+    <section class="section" id="s-18">
+      <h2><span class="badge"><img class="" src="assets/block-purple.webp?v=4e3b1c62" alt="" ><span>18</span></span>6 Diagnostics and Stability</h2>
+<p>To identify and resolve:</p>
+<ul>
+<li>crashes;</li>
+<li>bugs;</li>
+<li>technical errors;</li>
+<li>compatibility problems; and</li>
+<li>performance issues.</li>
+</ul>
+    </section>
+    <section class="section" id="s-18">
+      <h2><span class="badge"><img class="" src="assets/block-orange.webp?v=47e9701e" alt="" ><span>18</span></span>7 Security</h2>
+<p>To protect:</p>
+<ul>
+<li>CUBE SPIN!;</li>
+<li>Users;</li>
+<li>TEVITO STUDIOS™;</li>
+<li>advertising systems; and</li>
+<li>relevant service providers</li>
+</ul>
+<p>against unauthorized, fraudulent, abusive, or malicious activity.</p>
+    </section>
+    <section class="section" id="s-18">
+      <h2><span class="badge"><img class="" src="assets/block-blue.webp?v=de68e0ba" alt="" ><span>18</span></span>8 Game Development and Improvement</h2>
+<p>To improve:</p>
+<ul>
+<li>gameplay;</li>
+<li>technical reliability;</li>
+<li>compatibility;</li>
+<li>performance; and</li>
+<li>User experience.</li>
+</ul>
+    </section>
+    <section class="section" id="s-18">
+      <h2><span class="badge"><img class="" src="assets/block-red.webp?v=9ca7de31" alt="" ><span>18</span></span>9 User Support and Communications</h2>
+<p>To respond to support requests, privacy requests, complaints, and other communications initiated by Users.</p>
+    </section>
+    <section class="section" id="s-18">
+      <h2><span class="badge"><img class="" src="assets/block-yellow.webp?v=286847d9" alt="" ><span>18</span></span>10 Legal Compliance</h2>
+<p>To comply with applicable:</p>
+<ul>
+<li>laws;</li>
+<li>regulations;</li>
+<li>court orders;</li>
+<li>regulatory requirements; and</li>
+<li>valid legal processes.</li>
+</ul>
+    </section>
+    <section class="section" id="s-19">
+      <h2><span class="badge"><img class="" src="assets/block-green.webp?v=48a095d2" alt="" ><span>19</span></span>LEGAL BASES FOR PROCESSING</h2>
+<p>Where the GDPR or another law requiring a legal basis for processing applies, personal data will be processed only where an appropriate legal basis exists.</p>
+    </section>
+    <section class="section" id="s-19">
+      <h2><span class="badge"><img class="" src="assets/block-purple.webp?v=4e3b1c62" alt="" ><span>19</span></span>1 Consent</h2>
+<p>Consent may be relied upon where required for activities such as:</p>
+<ul>
+<li>personalized advertising;</li>
+<li>tracking;</li>
+<li>certain uses of advertising identifiers;</li>
+<li>certain optional analytics technologies; or</li>
+<li>comparable processing requiring consent.</li>
+</ul>
+<p>Where processing is based on consent, Users may withdraw consent at any time.</p>
+<p>Withdrawal does not affect the lawfulness of processing carried out before consent was withdrawn.</p>
+    </section>
+    <section class="section" id="s-19">
+      <h2><span class="badge"><img class="" src="assets/block-orange.webp?v=47e9701e" alt="" ><span>19</span></span>2 Legitimate Interests</h2>
+<p>Where permitted by applicable law, processing may be based on legitimate interests such as:</p>
+<ul>
+<li>maintaining Game security;</li>
+<li>protecting Users;</li>
+<li>preventing fraud and abuse;</li>
+<li>diagnosing technical problems;</li>
+<li>maintaining service reliability;</li>
+<li>responding to appropriate User communications; and</li>
+<li>establishing, exercising, or defending legal rights.</li>
+</ul>
+<p>Where legitimate interests are relied upon, those interests will be considered against the rights and freedoms of Users.</p>
+    </section>
+    <section class="section" id="s-19">
+      <h2><span class="badge"><img class="" src="assets/block-blue.webp?v=de68e0ba" alt="" ><span>19</span></span>3 Legal Obligations</h2>
+<p>Information may be processed where necessary to comply with a legal obligation applicable to the Data Controller.</p>
+    </section>
+    <section class="section" id="s-19">
+      <h2><span class="badge"><img class="" src="assets/block-red.webp?v=9ca7de31" alt="" ><span>19</span></span>4 Performance of a Service Requested by the User</h2>
+<p>Where applicable, limited processing may be necessary to provide Game functionality, Online Features, support, or another service specifically requested by the User.</p>
+<p>No legal basis described in this Privacy Policy is intended to override a consent requirement where applicable law specifically requires consent.</p>
+    </section>
+    <section class="section" id="s-20">
+      <h2><span class="badge"><img class="" src="assets/block-yellow.webp?v=286847d9" alt="" ><span>20</span></span>ANALYTICS</h2>
+<p>CUBE SPIN! may use analytics technologies where implemented in the released Game.</p>
+<p>Analytics may process information such as:</p>
+<ul>
+<li>application version;</li>
+<li>device type;</li>
+<li>operating system;</li>
+<li>Game-session information;</li>
+<li>gameplay events;</li>
+<li>technical approximate location;</li>
+<li>performance information; and</li>
+<li>diagnostic information.</li>
+</ul>
+<p>Analytics will be configured according to applicable law and relevant User privacy choices.</p>
+<p>Where optional analytics requires consent, such analytics will not be enabled before the required consent is obtained.</p>
+    </section>
+    <section class="section" id="s-21">
+      <h2><span class="badge"><img class="" src="assets/block-green.webp?v=48a095d2" alt="" ><span>21</span></span>CRASH REPORTING AND DIAGNOSTICS</h2>
+<p>CUBE SPIN! may use technical services to identify crashes, bugs, errors, and performance problems.</p>
+<p>Such services may process information including:</p>
+<ul>
+<li>device model;</li>
+<li>operating system;</li>
+<li>application version;</li>
+<li>crash timestamp;</li>
+<li>technical logs;</li>
+<li>error information;</li>
+<li>memory or performance information; and</li>
+<li>diagnostic information.</li>
+</ul>
+<p>Diagnostic processing is intended to help maintain the technical stability, security, and compatibility of CUBE SPIN!.</p>
+    </section>
+    <section class="section" id="s-22">
+      <h2><span class="badge"><img class="" src="assets/block-purple.webp?v=4e3b1c62" alt="" ><span>22</span></span>THIRD-PARTY SERVICE PROVIDERS</h2>
+<p>TEVITO STUDIOS™ may rely on third parties that provide services necessary or useful to operate, distribute, secure, analyze, support, or monetize CUBE SPIN!.</p>
+<p>Categories of third parties may include:</p>
+<ul>
+<li>Apple App Store;</li>
+<li>Google Play;</li>
+<li>advertising networks;</li>
+<li>advertising mediation providers;</li>
+<li>analytics providers;</li>
+<li>consent-management providers;</li>
+<li>crash-reporting providers;</li>
+<li>security and fraud-prevention providers;</li>
+<li>cloud or hosting providers; and</li>
+<li>technical infrastructure providers.</li>
+</ul>
+<p>Depending on the particular processing relationship, such providers may act as:</p>
+<ul>
+<li>processors;</li>
+<li>independent controllers; or</li>
+<li>another legally recognized category under applicable law.</li>
+</ul>
+<p>Where required by applicable law, appropriate contractual or other safeguards will be used.</p>
+<p>The providers actually used in the released Game and their data practices must be taken into account when maintaining this Privacy Policy and applicable App Store or Google Play privacy declarations.</p>
+    </section>
+    <section class="section" id="s-23">
+      <h2><span class="badge"><img class="" src="assets/block-orange.webp?v=47e9701e" alt="" ><span>23</span></span>APPLE AND GOOGLE SERVICES</h2>
+<p>If CUBE SPIN! is downloaded through Apple App Store or Google Play, Apple or Google may independently process information relating to:</p>
+<ul>
+<li>store accounts;</li>
+<li>application downloads;</li>
+<li>devices;</li>
+<li>installations;</li>
+<li>updates;</li>
+<li>app-store activity; and</li>
+<li>other Platform Provider functionality.</li>
+</ul>
+<p>TEVITO STUDIOS™ does not control information independently collected by Apple or Google through their own platforms and services.</p>
+<p>An Apple or Google account used to access an app store is not a CUBE SPIN! or TEVITO STUDIOS™ account.</p>
+<p>Users should review the relevant Platform Provider's privacy information and settings.</p>
+    </section>
+    <section class="section" id="s-24">
+      <h2><span class="badge"><img class="" src="assets/block-blue.webp?v=de68e0ba" alt="" ><span>24</span></span>THIRD-PARTY ADVERTISEMENTS AND EXTERNAL LINKS</h2>
+<p>Advertisements displayed in CUBE SPIN! may promote third-party:</p>
+<ul>
+<li>applications;</li>
+<li>games;</li>
+<li>products;</li>
+<li>websites; or</li>
+<li>services.</li>
+</ul>
+<p>If a User voluntarily selects an Advertisement, the User may leave CUBE SPIN! and interact with an independent third-party service.</p>
+<p>TEVITO STUDIOS™ does not control the privacy practices, content, security, availability, or terms of independent third-party advertisers, applications, websites, stores, or services.</p>
+<p>Information collected independently by such a third party is governed by that third party's own privacy practices and applicable terms.</p>
+    </section>
+    <section class="section" id="s-25">
+      <h2><span class="badge"><img class="" src="assets/block-red.webp?v=9ca7de31" alt="" ><span>25</span></span>DATA SHARING</h2>
+<p>Personal information may be disclosed to or processed by third parties where reasonably necessary for the purposes described in this Privacy Policy or where permitted or required by law.</p>
+<p>Categories of recipients may include:</p>
+<ul>
+<li>advertising providers;</li>
+<li>advertising mediation providers;</li>
+<li>analytics providers;</li>
+<li>consent-management providers;</li>
+<li>technical service providers;</li>
+<li>crash-reporting providers;</li>
+<li>security providers;</li>
+<li>fraud-prevention providers;</li>
+<li>Platform Providers;</li>
+<li>professional advisers;</li>
+<li>competent public authorities where legally required; and</li>
+<li>parties involved in a legitimate merger, acquisition, restructuring, sale, transfer, or similar transaction.</li>
+</ul>
+<p>TEVITO STUDIOS™ does not intentionally disclose personal information to unrelated third parties for purposes materially incompatible with those described in this Privacy Policy unless another valid legal basis exists.</p>
+    </section>
+    <section class="section" id="s-26">
+      <h2><span class="badge"><img class="" src="assets/block-yellow.webp?v=286847d9" alt="" ><span>26</span></span>SALE, SHARING, AND TARGETED ADVERTISING</h2>
+<p>TEVITO STUDIOS™ does not sell Users' personal information in exchange for direct monetary payment.</p>
+<p>However, certain disclosures or uses of information involving:</p>
+<ul>
+<li>personalized advertising;</li>
+<li>cross-context behavioral advertising; or</li>
+<li>targeted advertising</li>
+</ul>
+<p>may be legally classified as a “sale,” “sharing,” “targeted advertising,” or similar activity under certain privacy laws even where no monetary payment is exchanged.</p>
+<p>Where such laws apply, TEVITO STUDIOS™ will provide legally required:</p>
+<ul>
+<li>disclosures;</li>
+<li>consent mechanisms;</li>
+<li>opt-out mechanisms; or</li>
+<li>other privacy controls.</li>
+</ul>
+<p>Users will not be unlawfully discriminated against for exercising applicable privacy rights.</p>
+    </section>
+    <section class="section" id="s-27">
+      <h2><span class="badge"><img class="" src="assets/block-green.webp?v=48a095d2" alt="" ><span>27</span></span>ADVERTISING IDENTIFIERS AND PRIVACY CONTROLS</h2>
+<p>Mobile operating systems may provide controls relating to advertising identifiers and advertising privacy.</p>
+<p>Depending on the User's device, region, operating system, and applicable technology, Users may be able to:</p>
+<ul>
+<li>deny tracking permission;</li>
+<li>restrict advertising tracking;</li>
+<li>limit personalized advertising;</li>
+<li>reset or otherwise control an advertising identifier where supported;</li>
+<li>change operating-system privacy settings; and</li>
+<li>modify consent choices through an available in-Game privacy or consent interface.</li>
+</ul>
+<p>The availability and operation of these controls may vary by platform and operating-system version.</p>
+    </section>
+    <section class="section" id="s-28">
+      <h2><span class="badge"><img class="" src="assets/block-purple.webp?v=4e3b1c62" alt="" ><span>28</span></span>CONSENT RECORDS AND PRIVACY PREFERENCES</h2>
+<p>Where consent is requested through CUBE SPIN! or through an integrated consent-management technology, limited information may be stored or processed in order to record and respect the User's privacy choices.</p>
+<p>This may include:</p>
+<ul>
+<li>whether consent was granted or refused;</li>
+<li>consent categories selected by the User;</li>
+<li>consent timestamps;</li>
+<li>consent-management identifiers or consent strings;</li>
+<li>region information where needed to determine applicable privacy requirements;</li>
+<li>privacy preference signals; and</li>
+<li>information necessary to demonstrate compliance with applicable consent requirements.</li>
+</ul>
+<p>Such information may be stored locally on the User's device or processed by an applicable consent-management provider.</p>
+<p>Consent records may be used to:</p>
+<ul>
+<li>remember the User's choices;</li>
+<li>communicate applicable privacy choices to relevant service providers;</li>
+<li>avoid unnecessarily repeating the same privacy request;</li>
+<li>demonstrate compliance with legal requirements; and</li>
+<li>allow Users to modify or withdraw consent.</li>
+</ul>
+    </section>
+    <section class="section" id="s-29">
+      <h2><span class="badge"><img class="" src="assets/block-orange.webp?v=47e9701e" alt="" ><span>29</span></span>WITHDRAWING CONSENT</h2>
+<p>Where personal-data processing is based on consent, Users may withdraw that consent at any time.</p>
+<p>Depending on the Game version and the technology involved, consent may be withdrawn or privacy choices may be changed by:</p>
+<ul>
+<li>using an available in-Game privacy or consent-management interface;</li>
+<li>using relevant operating-system privacy settings; or</li>
+<li>contacting TEVITO STUDIOS™ at <a href="mailto:info@tevito.com">info@tevito.com</a>.</li>
+</ul>
+<p>Where a third-party provider independently controls particular privacy settings, Users may also need to use privacy controls made available by that provider.</p>
+<p>Withdrawal of consent does not affect the lawfulness of processing carried out before consent was withdrawn.</p>
+<p>Where technically and legally possible, withdrawing optional consent will not prevent ordinary gameplay.</p>
+<p>Where applicable law requires consent to be as easy to withdraw as it was to provide, the relevant consent mechanism will be designed and maintained accordingly.</p>
+    </section>
+    <section class="section" id="s-30">
+      <h2><span class="badge"><img class="" src="assets/block-blue.webp?v=de68e0ba" alt="" ><span>30</span></span>DEVICE STORAGE, SDKs, AND SIMILAR TECHNOLOGIES</h2>
+<p>CUBE SPIN! may use application storage, software development kits (“SDKs”), device identifiers, consent-management technologies, and similar mobile technologies necessary or useful for operating the Game and its Online Features.</p>
+<p>Depending on the released version of the Game, these technologies may be used for:</p>
+<ul>
+<li>storing Game settings;</li>
+<li>storing Game progress;</li>
+<li>remembering privacy preferences;</li>
+<li>displaying advertisements;</li>
+<li>measuring advertisement delivery;</li>
+<li>preventing fraud;</li>
+<li>performing analytics where implemented;</li>
+<li>diagnosing technical problems;</li>
+<li>maintaining security; and</li>
+<li>ensuring compatibility and technical functionality.</li>
+</ul>
+<p>Some information may remain only on the User's device.</p>
+<p>Other information may be transmitted to relevant online or third-party services when the device is connected to the internet.</p>
+<p>Where applicable law requires consent for storing or accessing information on a User's device for a particular purpose, required consent will be obtained before the relevant optional technology is used.</p>
+<p>Technologies that are strictly necessary to provide a service expressly requested by the User may be used without optional consent where permitted by applicable law.</p>
+    </section>
+    <section class="section" id="s-31">
+      <h2><span class="badge"><img class="" src="assets/block-red.webp?v=9ca7de31" alt="" ><span>31</span></span>DATA RETENTION</h2>
+<p>TEVITO STUDIOS™ retains personal information only for as long as reasonably necessary for the purposes for which it is processed.</p>
+<p>Where a single fixed retention period cannot reasonably be stated, retention is determined using criteria including:</p>
+<ul>
+<li>the type and sensitivity of the information;</li>
+<li>the purpose for which the information was processed;</li>
+<li>whether the information remains necessary for that purpose;</li>
+<li>security and fraud-prevention requirements;</li>
+<li>applicable legal obligations;</li>
+<li>applicable limitation periods;</li>
+<li>the need to establish, exercise, or defend legal claims; and</li>
+<li>applicable service-provider retention requirements.</li>
+</ul>
+<p>Information will not intentionally be retained longer than reasonably necessary merely because it might potentially be useful in the future.</p>
+<p>Local gameplay information stored exclusively on a User's device generally remains there until:</p>
+<ul>
+<li>the Game data is cleared;</li>
+<li>the Game is uninstalled;</li>
+<li>the device is reset;</li>
+<li>the storage is otherwise deleted; or</li>
+<li>another relevant deletion event occurs.</li>
+</ul>
+<p>Support and privacy communications may be retained for as long as reasonably necessary to respond to the communication, document the response, comply with legal obligations, resolve disputes, or establish, exercise, or defend legal claims.</p>
+<p>Third-party providers may maintain separate retention periods in accordance with applicable law and their own privacy practices.</p>
+    </section>
+    <section class="section" id="s-32">
+      <h2><span class="badge"><img class="" src="assets/block-yellow.webp?v=286847d9" alt="" ><span>32</span></span>DATA DELETION</h2>
+<p>Because CUBE SPIN! does not currently require a User account, TEVITO STUDIOS™ does not maintain a standard registered Game account that must be separately closed or deleted.</p>
+    </section>
+    <section class="section" id="s-32">
+      <h2><span class="badge"><img class="" src="assets/block-green.webp?v=48a095d2" alt="" ><span>32</span></span>1 Local Game Data</h2>
+<p>Users may generally delete locally stored Game information by:</p>
+<ul>
+<li>clearing CUBE SPIN! application data through device settings; or</li>
+<li>uninstalling CUBE SPIN!.</li>
+</ul>
+    </section>
+    <section class="section" id="s-32">
+      <h2><span class="badge"><img class="" src="assets/block-purple.webp?v=4e3b1c62" alt="" ><span>32</span></span>2 Online Data</h2>
+<p>Where TEVITO STUDIOS™ retains personal information associated with a User and applicable law grants a deletion right, the User may submit a request to:</p>
+<p class="strong"><a href="mailto:info@tevito.com">info@tevito.com</a></p>
+<p>Because CUBE SPIN! does not currently use registered User accounts, TEVITO STUDIOS™ may need limited technical information reasonably necessary to locate information associated with the requester.</p>
+<p>TEVITO STUDIOS™ will not intentionally request more information than reasonably necessary to verify and process the request.</p>
+<p>Deletion requests may be subject to lawful exceptions, including where retention remains necessary for:</p>
+<ul>
+<li>compliance with legal obligations;</li>
+<li>security;</li>
+<li>fraud prevention;</li>
+<li>establishment, exercise, or defense of legal claims; or</li>
+<li>another purpose permitted by applicable law.</li>
+</ul>
+    </section>
+    <section class="section" id="s-33">
+      <h2><span class="badge"><img class="" src="assets/block-orange.webp?v=47e9701e" alt="" ><span>33</span></span>INTERNATIONAL DATA TRANSFERS</h2>
+<p>Third-party providers used in connection with CUBE SPIN! may process information in countries other than the country in which a User lives.</p>
+<p>Where personal data protected by the GDPR or another applicable law is transferred internationally, legally required safeguards will be used where applicable.</p>
+<p>Depending on the circumstances, safeguards may include:</p>
+<ul>
+<li>an adequacy decision;</li>
+<li>Standard Contractual Clauses;</li>
+<li>another approved contractual safeguard; or</li>
+<li>another legally recognized transfer mechanism.</li>
+</ul>
+<p>Where applicable law gives Users a right to information concerning safeguards used for an international transfer, Users may request additional information by contacting:</p>
+<p class="strong"><a href="mailto:info@tevito.com">info@tevito.com</a></p>
+    </section>
+    <section class="section" id="s-34">
+      <h2><span class="badge"><img class="" src="assets/block-blue.webp?v=de68e0ba" alt="" ><span>34</span></span>DATA SECURITY</h2>
+<p>TEVITO STUDIOS™ takes reasonable technical and organizational measures designed to protect information processed in connection with CUBE SPIN!.</p>
+<p>Depending on the nature of the processing, such measures may include:</p>
+<ul>
+<li>data minimization;</li>
+<li>limiting access to information;</li>
+<li>using established service providers;</li>
+<li>secure network communications;</li>
+<li>maintaining software updates;</li>
+<li>access controls;</li>
+<li>technical monitoring; and</li>
+<li>security practices appropriate to the nature and risk of the information involved.</li>
+</ul>
+<p>Personal information transmitted by or on behalf of the Game will be handled using appropriate security measures required by applicable law and applicable Platform Provider rules.</p>
+<p>No electronic transmission, mobile application, storage system, or internet service can be guaranteed to be completely secure.</p>
+<p>Absolute security therefore cannot be guaranteed.</p>
+    </section>
+    <section class="section" id="s-35">
+      <h2><span class="badge"><img class="" src="assets/block-red.webp?v=9ca7de31" alt="" ><span>35</span></span>CHILDREN'S PRIVACY</h2>
+<p>CUBE SPIN! does not require Users to create an account or directly provide their name, email address, telephone number, or ordinary registration information in order to play.</p>
+<p>However, advertising or technical SDKs may process device-related information, and additional requirements may apply where children use the Game.</p>
+<p>TEVITO STUDIOS™ will configure:</p>
+<ul>
+<li>advertising services;</li>
+<li>advertising identifiers;</li>
+<li>analytics;</li>
+<li>SDKs;</li>
+<li>age-related settings;</li>
+<li>consent mechanisms;</li>
+<li>Platform Provider declarations; and</li>
+<li>other relevant technology</li>
+</ul>
+<p>according to the actual intended audience of the released Game and applicable child-privacy requirements.</p>
+<p>Where applicable law or Platform Provider requirements prohibit or restrict personalized advertising, tracking, profiling, advertising identifiers, or other processing involving children, the applicable restrictions will be implemented.</p>
+<p>TEVITO STUDIOS™ does not knowingly use children's personal information for personalized advertising where such use is prohibited.</p>
+<p>Where CUBE SPIN!'s declared target audience includes children, TEVITO STUDIOS™ will seek to use advertising technologies, SDKs, and configurations permitted for that audience and apply additional restrictions required by applicable law and relevant Platform Providers.</p>
+<p>Where applicable law requires age screening, parental consent, parental authorization, or another age-related privacy mechanism, the appropriate mechanism will be implemented.</p>
+<p>The age at which a User may independently consent to particular data processing may differ depending on the User's country or region and the applicable law.</p>
+<p>A parent or legal guardian who believes information relating to a child has been processed contrary to applicable law may contact:</p>
+<p class="strong"><a href="mailto:info@tevito.com">info@tevito.com</a></p>
+<p>TEVITO STUDIOS™ will review such requests and take appropriate action where required.</p>
+    </section>
+    <section class="section" id="s-36">
+      <h2><span class="badge"><img class="" src="assets/block-yellow.webp?v=286847d9" alt="" ><span>36</span></span>PRIVACY RIGHTS — EUROPEAN UNION AND EUROPEAN ECONOMIC AREA</h2>
+<p>Where the GDPR applies, Users may have rights including:</p>
+<ul>
+<li>the right to be informed;</li>
+<li>the right of access to personal data;</li>
+<li>the right to rectification of inaccurate personal data;</li>
+<li>the right to erasure in applicable circumstances;</li>
+<li>the right to restriction of processing;</li>
+<li>the right to data portability where applicable;</li>
+<li>the right to object to certain processing;</li>
+<li>the right to withdraw consent where processing is based on consent; and</li>
+<li>applicable rights relating to automated decision-making and profiling.</li>
+</ul>
+<p>These rights may be subject to conditions, limitations, and exceptions under applicable law.</p>
+<p>Requests may be submitted to:</p>
+<p class="strong"><a href="mailto:info@tevito.com">info@tevito.com</a></p>
+<p>Because CUBE SPIN! does not currently use registered User accounts, TEVITO STUDIOS™ may not always be able to identify information as belonging to a particular User without additional technical information.</p>
+<p>Where the purposes of processing do not require TEVITO STUDIOS™ to identify an individual, TEVITO STUDIOS™ will not collect additional information solely for the purpose of identifying that individual except where required or appropriate for exercising applicable privacy rights.</p>
+    </section>
+    <section class="section" id="s-37">
+      <h2><span class="badge"><img class="" src="assets/block-green.webp?v=48a095d2" alt="" ><span>37</span></span>PRIVACY REQUEST PROCEDURE AND RESPONSE TIMES</h2>
+<p>Users may submit applicable privacy requests to:</p>
+<p class="strong"><a href="mailto:info@tevito.com">info@tevito.com</a></p>
+<p>A request should describe the privacy right the User wishes to exercise and provide sufficient information for TEVITO STUDIOS™ to understand and process the request.</p>
+<p>Where reasonably necessary, TEVITO STUDIOS™ may request additional information to:</p>
+<ul>
+<li>locate relevant information;</li>
+<li>confirm the identity of the requester;</li>
+<li>prevent unauthorized access, disclosure, alteration, or deletion; or</li>
+<li>comply with applicable law.</li>
+</ul>
+<p>TEVITO STUDIOS™ will not intentionally request more information than reasonably necessary for those purposes.</p>
+<p>Where the GDPR applies, TEVITO STUDIOS™ will respond to applicable requests without undue delay and generally within one month after receiving the request.</p>
+<p>That period may be extended by up to two additional months where permitted by law and necessary because of the complexity or number of requests.</p>
+<p>Where such an extension applies, the User will be informed within the initial one-month period where required by law.</p>
+<p>Where TEVITO STUDIOS™ does not take action on a GDPR request, the User will be informed, where required, of the reasons and applicable rights to lodge a complaint with a supervisory authority or seek a judicial remedy.</p>
+<p>Requests will generally be handled without charge where required by law.</p>
+<p>Where permitted by applicable law, TEVITO STUDIOS™ may charge a reasonable fee or refuse to act on requests that are manifestly unfounded or excessive, particularly because of their repetitive character.</p>
+    </section>
+    <section class="section" id="s-38">
+      <h2><span class="badge"><img class="" src="assets/block-purple.webp?v=4e3b1c62" alt="" ><span>38</span></span>RIGHT TO LODGE A COMPLAINT WITH A SUPERVISORY OR REGULATORY AUTHORITY</h2>
+<p>Where applicable data-protection or privacy law provides such a right, Users may lodge a complaint with a competent data-protection, privacy, consumer-protection, or other relevant regulatory authority if they believe that the processing of their personal information violates applicable law.</p>
+<p>For Users protected by the GDPR, a complaint may generally be submitted to a competent supervisory authority, including an authority in the EU or EEA Member State of the User's:</p>
+<ul>
+<li>habitual residence;</li>
+<li>place of work; or</li>
+<li>place of the alleged infringement.</li>
+</ul>
+<p>Users in other jurisdictions may have similar rights to contact a competent privacy or regulatory authority under applicable local law.</p>
+<p>The availability of a particular authority, procedure, remedy, or appeal depends on the User's jurisdiction and applicable law.</p>
+<p>Before or in addition to contacting a regulatory authority, Users may contact TEVITO STUDIOS™ regarding privacy-related questions, concerns, or requests at:</p>
+<p class="strong"><a href="mailto:info@tevito.com">info@tevito.com</a></p>
+<p>Nothing in this Privacy Policy limits any right a User may have to contact a competent supervisory or regulatory authority or seek another remedy available under applicable law.</p>
+    </section>
+    <section class="section" id="s-39">
+      <h2><span class="badge"><img class="" src="assets/block-orange.webp?v=47e9701e" alt="" ><span>39</span></span>OTHER REGIONAL PRIVACY RIGHTS</h2>
+<p>Users in jurisdictions outside the European Union or European Economic Area may have additional privacy rights under applicable law.</p>
+<p>Depending on the jurisdiction and whether relevant legal thresholds apply, these may include rights to:</p>
+<ul>
+<li>know what personal information is processed;</li>
+<li>access personal information;</li>
+<li>correct personal information;</li>
+<li>request deletion;</li>
+<li>obtain information about disclosures;</li>
+<li>opt out of targeted advertising;</li>
+<li>opt out of legally defined sale or sharing;</li>
+<li>withdraw consent;</li>
+<li>restrict certain processing; or</li>
+<li>appeal certain privacy decisions.</li>
+</ul>
+<p>TEVITO STUDIOS™ will honor legally applicable privacy rights.</p>
+<p>Requests may be submitted to:</p>
+<p class="strong"><a href="mailto:info@tevito.com">info@tevito.com</a></p>
+    </section>
+    <section class="section" id="s-40">
+      <h2><span class="badge"><img class="" src="assets/block-blue.webp?v=de68e0ba" alt="" ><span>40</span></span>AUTOMATED DECISION-MAKING AND PROFILING</h2>
+<p>TEVITO STUDIOS™ does not currently use CUBE SPIN! to make decisions based solely on automated processing that produce legal effects or similarly significant effects on Users.</p>
+<p>Advertising providers may use automated technologies to determine or assist in determining which Advertisements are displayed.</p>
+<p>Where such processing constitutes profiling or automated decision-making regulated by applicable law, legally required information, consent, or privacy choices will be provided as applicable.</p>
+    </section>
+    <section class="section" id="s-41">
+      <h2><span class="badge"><img class="" src="assets/block-red.webp?v=9ca7de31" alt="" ><span>41</span></span>PRIVACY PREFERENCE SIGNALS</h2>
+<p>Privacy controls and legally recognized opt-out preference signals may vary by:</p>
+<ul>
+<li>jurisdiction;</li>
+<li>device;</li>
+<li>operating system;</li>
+<li>browser; and</li>
+<li>advertising technology.</li>
+</ul>
+<p>Where applicable law requires TEVITO STUDIOS™ or a relevant provider to recognize a legally valid privacy preference or opt-out signal, it will be handled in accordance with applicable requirements and the capabilities of the relevant technology.</p>
+    </section>
+    <section class="section" id="s-42">
+      <h2><span class="badge"><img class="" src="assets/block-yellow.webp?v=286847d9" alt="" ><span>42</span></span>CHANGES TO THIRD-PARTY SERVICES AND SDKs</h2>
+<p>TEVITO STUDIOS™ may change advertising networks, mediation providers, analytics services, diagnostic providers, consent-management providers, security services, or other technical SDKs over time.</p>
+<p>Before introducing a provider or materially different processing activity, TEVITO STUDIOS™ will assess whether:</p>
+<ul>
+<li>this Privacy Policy requires updating;</li>
+<li>additional disclosure is required;</li>
+<li>Platform Provider privacy declarations must be changed;</li>
+<li>a different legal basis is required;</li>
+<li>new or renewed User consent is required; or</li>
+<li>other privacy controls are required.</li>
+</ul>
+<p>Where applicable law requires consent before new processing begins, continued use of the Game will not be treated as a substitute for such consent.</p>
+    </section>
+    <section class="section" id="s-43">
+      <h2><span class="badge"><img class="" src="assets/block-green.webp?v=48a095d2" alt="" ><span>43</span></span>APP STORE AND GOOGLE PLAY PRIVACY DISCLOSURES</h2>
+<p>TEVITO STUDIOS™ intends for privacy declarations relating to CUBE SPIN! through relevant Platform Providers to accurately reflect the actual data practices of the released Game.</p>
+<p>This includes, where applicable:</p>
+<ul>
+<li>Apple App Store privacy information;</li>
+<li>Apple's App Tracking Transparency disclosures and permissions;</li>
+<li>Google Play Data Safety information;</li>
+<li>advertising and consent disclosures;</li>
+<li>age-related declarations; and</li>
+<li>other privacy information required by the relevant Platform Provider.</li>
+</ul>
+<p>Such declarations will take into account information collected, transmitted, processed, or shared through third-party SDKs incorporated into CUBE SPIN!.</p>
+<p>Where the Game's actual data-processing practices materially change, applicable Platform Provider disclosures will be reviewed and updated where necessary.</p>
+    </section>
+    <section class="section" id="s-44">
+      <h2><span class="badge"><img class="" src="assets/block-purple.webp?v=4e3b1c62" alt="" ><span>44</span></span>CONSISTENCY BETWEEN THE GAME, PRIVACY POLICY, AND STORE DISCLOSURES</h2>
+<p>TEVITO STUDIOS™ intends for:</p>
+<ul>
+<li>this Privacy Policy;</li>
+<li>in-Game privacy disclosures;</li>
+<li>consent requests;</li>
+<li>App Store privacy information;</li>
+<li>Google Play Data Safety disclosures; and</li>
+<li>the actual behavior of CUBE SPIN! and incorporated SDKs</li>
+</ul>
+<p>to remain reasonably consistent with one another.</p>
+<p>If a material inconsistency is identified, TEVITO STUDIOS™ will seek to correct the applicable disclosure, configuration, technology, or data practice as appropriate.</p>
+<p>No statement in this Privacy Policy is intended to authorize data processing prohibited by applicable law or applicable Platform Provider requirements.</p>
+    </section>
+    <section class="section" id="s-45">
+      <h2><span class="badge"><img class="" src="assets/block-orange.webp?v=47e9701e" alt="" ><span>45</span></span>AVAILABILITY OF PRIVACY POLICY AND TERMS OF USE</h2>
+<p>The current Privacy Policy and Terms of Use for CUBE SPIN! will be made available directly within the Game through an appropriate legal, privacy, settings, information, or similar section of the Game interface.</p>
+<p>Users will not be required to create a CUBE SPIN! or TEVITO STUDIOS™ account in order to access these documents.</p>
+<p>TEVITO STUDIOS™ intends to keep these legal documents reasonably accessible while the Game is installed.</p>
+<p>Where required by an application marketplace, Platform Provider, applicable law, or distribution requirement, the Privacy Policy may also be made available through a publicly accessible external location and through the relevant application-store listing.</p>
+<p>The external location does not need to use a CUBE SPIN!-specific domain.</p>
+<p>The version provided to Users will identify its applicable Last Updated and Effective Date.</p>
+<p>Where this Privacy Policy or the Terms of Use are materially updated, the versions made available through the Game will be updated as appropriate.</p>
+    </section>
+    <section class="section" id="s-46">
+      <h2><span class="badge"><img class="" src="assets/block-blue.webp?v=de68e0ba" alt="" ><span>46</span></span>YOUR PRIVACY CHOICES</h2>
+<p>Depending on the User's device, country, applicable law, and the technologies actually implemented, Users may be able to control certain processing by:</p>
+<ul>
+<li>declining optional consent requests;</li>
+<li>withdrawing previously provided consent;</li>
+<li>changing advertising privacy settings;</li>
+<li>changing operating-system tracking settings;</li>
+<li>controlling advertising identifiers where supported;</li>
+<li>using an available in-Game privacy or consent-management interface;</li>
+<li>clearing locally stored Game data;</li>
+<li>uninstalling CUBE SPIN!; or</li>
+<li>contacting TEVITO STUDIOS™ at <a href="mailto:info@tevito.com">info@tevito.com</a>.</li>
+</ul>
+<p>Where legally permitted, refusing or withdrawing consent for personalized advertising may result in contextual or non-personalized advertising instead.</p>
+<p>Refusing optional consent does not by itself prevent ordinary gameplay.</p>
+    </section>
+    <section class="section" id="s-47">
+      <h2><span class="badge"><img class="" src="assets/block-red.webp?v=9ca7de31" alt="" ><span>47</span></span>CHANGES TO THIS PRIVACY POLICY</h2>
+<p>TEVITO STUDIOS™ may update this Privacy Policy from time to time.</p>
+<p>Changes may be necessary because of:</p>
+<ul>
+<li>changes to CUBE SPIN!;</li>
+<li>new or removed features;</li>
+<li>changes to advertising technologies;</li>
+<li>changes to analytics or diagnostic services;</li>
+<li>changes to third-party providers;</li>
+<li>changes in applicable law;</li>
+<li>Platform Provider requirements;</li>
+<li>security improvements; or</li>
+<li>changes to data-processing practices.</li>
+</ul>
+<p>The current version will display an updated “Last Updated” date.</p>
+<p>Where this Privacy Policy is made available both within the Game and through a public location required by a Platform Provider, TEVITO STUDIOS™ will seek to keep the applicable versions consistent.</p>
+<p>Where required by applicable law, Users will receive appropriate notice of material changes.</p>
+<p>Where a new processing activity requires consent, continued use of the Game will not be treated as a substitute for legally required consent.</p>
+    </section>
+    <section class="section" id="s-48">
+      <h2><span class="badge"><img class="" src="assets/block-yellow.webp?v=286847d9" alt="" ><span>48</span></span>CONTACT US</h2>
+<p>If you have questions concerning this Privacy Policy, personal-data processing, privacy choices, or your privacy rights, contact:</p>
+<p class="strong">CUBE SPIN! / TEVITO STUDIOS™</p>
+<p>Data Controller:<br>Tomislav Vitić, operating under the TEVITO STUDIOS™ brand</p>
+<p>Privacy contact:<br><a href="mailto:info@tevito.com">info@tevito.com</a></p>
+<p>General support:<br><a href="mailto:support@tevito.com">support@tevito.com</a></p>
+<p>Privacy and personal-data requests should preferably be sent to <a href="mailto:info@tevito.com">info@tevito.com</a> so they can be identified and handled appropriately.</p>
+    </section>
+    <section class="section" id="s-49">
+      <h2><span class="badge"><img class="" src="assets/block-green.webp?v=48a095d2" alt="" ><span>49</span></span>FINAL PRIVACY STATEMENT</h2>
+<p class="strong">CUBE SPIN! was conceived and developed under the TEVITO STUDIOS™ brand.</p>
+<p>CUBE SPIN! has been designed so that Users can play without creating a CUBE SPIN! or TEVITO STUDIOS™ account or providing registration credentials to TEVITO STUDIOS™.</p>
+<p>The Game is currently free to play and does not contain in-app purchases or paid subscriptions.</p>
+<p>The Game may be played online and offline.</p>
+<p>Game progress may be stored locally on the User's device.</p>
+<p>CUBE SPIN! is monetized primarily through Banner Advertisements and periodic Interstitial Advertisements.</p>
+<p>Advertising and related technical services may process limited device, network, advertising, diagnostic, security, consent, and gameplay-related information as described in this Privacy Policy.</p>
+<p>The Privacy Policy and Terms of Use are intended to remain accessible directly within CUBE SPIN!.</p>
+<p>TEVITO STUDIOS™ seeks to limit personal-data processing to what is reasonably necessary and legally permitted for operating, supporting, securing, improving, and monetizing CUBE SPIN!.</p>
+<p>Where consent is legally required, the relevant optional processing will not be activated before the required consent has been obtained.</p>
+<p class="strong">© 2026 TEVITO STUDIOS™. All rights reserved.</p>
+<p class="strong">CUBE SPIN! was conceived and developed under the TEVITO STUDIOS™ brand.</p>
+<p class="strong">TEVITO STUDIOS™ and its associated branding are claimed as trademarks of their applicable owner.</p>
+    </section>
+  </article>
+</div>
+<a class="to-top" href="#top" aria-label="Back to top">↑</a>
+
+<footer class="footer">
+  <img class="studio" src="assets/tevito-studios.webp?v=4a7c7df3" alt="TEVITO STUDIOS" width="132">
+  <nav aria-label="Legal">
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Use</a>
+    <a href="mailto:support@tevito.com">support@tevito.com</a>
+  </nav>
+  <p>© 2026 TEVITO STUDIOS™. All rights reserved.<br>CUBE SPIN! was conceived and developed by TEVITO STUDIOS™.</p>
+</footer>
+
+<script>
+(() => {
+  // Contents: open beside the text on a wide screen, folded away on a phone.
+  const toc = document.querySelector('.toc details');
+  if (toc && window.matchMedia('(min-width: 980px)').matches) toc.open = true;
+  // The section being read lights up in the contents.
+  const links = new Map([...document.querySelectorAll('.toc a')].map((a) => [a.getAttribute('href').slice(1), a]));
+  if ('IntersectionObserver' in window && links.size) {
+    const seen = new IntersectionObserver((items) => {
+      for (const item of items) {
+        if (item.isIntersecting) {
+          links.forEach((a) => a.classList.remove('on'));
+          links.get(item.target.id)?.classList.add('on');
+        }
+      }
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    document.querySelectorAll('.section').forEach((s) => seen.observe(s));
+  }
+  // Back to the top, once there is a way to go.
+  const up = document.querySelector('.to-top');
+  if (up) {
+    const show = () => up.classList.toggle('show', window.scrollY > 900);
+    window.addEventListener('scroll', show, { passive: true });
+    show();
+  }
+})();
+</script>
+</body>
+</html>
